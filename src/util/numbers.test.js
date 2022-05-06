@@ -9,10 +9,21 @@ it("should transform a string number to a number of type number", () => {
   expect(result).toBeTypeOf("number");
 });
 
-it("should not yeild number for non-transformable values", () => {
-  const input = "one";
+it("should transform a string number to a number", () => {
+  const input = "1";
 
   const result = transformToNumber(input);
 
+  expect(result).toBe(Number(input));
+});
+
+it("should not yeild number for non-transformable values", () => {
+  const input = "one";
+  const input2 = {};
+
+  const result = transformToNumber(input);
+  const result2 = transformToNumber(input2);
+
   expect(result).toBeNaN();
+  expect(result2).toBeNaN();
 });
