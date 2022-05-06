@@ -46,9 +46,20 @@ it("should yield 0 if an empty array is provided", () => {
   expect(result).toBe(0);
 });
 
-it.only("should throw an error if no value is passed into the function", () => {
+it("should throw an error if no value is passed into the function", () => {
   const resultFn = () => {
     add();
   };
+  expect(resultFn).toThrow();
+});
+
+it("should throw an error if provided with multiple arguments instead of an array", () => {
+  const num1 = 1;
+  const num2 = 2;
+
+  const resultFn = () => {
+    add(num1, num2);
+  };
+
   expect(resultFn).toThrow();
 });
